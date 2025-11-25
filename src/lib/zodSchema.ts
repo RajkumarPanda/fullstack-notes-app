@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const noteFormInputSchema = z.object({
+export const noteFormFieldSchema = z.object({
 	noteTitle: z
 		.string()
 		.min(5, { error: "The title must be 5 or more characters long" })

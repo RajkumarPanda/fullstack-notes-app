@@ -10,6 +10,10 @@
 		"prod": "eslint && next build && next start"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^5.2.2",
+		"@radix-ui/react-label": "^2.1.8",
+		"@radix-ui/react-separator": "^1.1.8",
+		"@radix-ui/react-slot": "^1.2.4",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"lucide-react": "^0.554.0",
@@ -17,6 +21,7 @@
 		"next-themes": "^0.4.6",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0",
+		"react-hook-form": "^7.66.1",
 		"sharp": "^0.34.5",
 		"tailwind-merge": "^3.4.0",
 		"zod": "^4.1.13"
