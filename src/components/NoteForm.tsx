@@ -8,6 +8,7 @@ import { noteFormFieldSchema } from "@/lib/zodSchema";
 import { Button } from "./shadcnui/button";
 import { NoteFormFieldType } from "@/lib/types";
 import { FilePlus, Loader } from "lucide-react";
+import { customDelay } from "@/hooks/customDelay";
 
 const NoteForm = () => {
 	// Initialize useForm hook
@@ -28,6 +29,9 @@ const NoteForm = () => {
 	// Form handler function
 	const noteFormHandlerFunc = async (noteData: NoteFormFieldType) => {
 		try {
+			// Delaying the form submission
+			await customDelay(1500);
+
 			console.log(noteData);
 
 			reset();
