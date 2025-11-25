@@ -2,6 +2,7 @@ import Header from "@/components/Header/Header";
 import ThemeProvider from "@/components/Providers/ThemeProvider";
 import { ReactNode } from "react";
 import "./globals.css";
+import MobileMenuBar from "@/components/MobileMenuBar";
 
 type RootLayoutProps = {
 	children: ReactNode;
@@ -19,7 +20,13 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
 					enableSystem={false}>
 					<Header />
 
-					<main className="mx-auto max-w-7xl px-6 py-3">{children}</main>
+					<main className="container mx-auto px-6 py-3 pb-[10dvh]">
+						{children}
+					</main>
+
+					<footer className="bg-background text-foreground fixed bottom-0 flex h-[8dvh] w-full border-t shadow-2xl md:hidden">
+						<MobileMenuBar />
+					</footer>
 				</ThemeProvider>
 			</body>
 		</html>
