@@ -8,7 +8,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint",
-		"prod": "eslint && next build && next start"
+		"prod": "eslint && next build && next start",
+		"migrate": "prisma migrate dev && prisma generate",
+		"studio": "prisma studio --browser none"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",
