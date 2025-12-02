@@ -9,3 +9,12 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+// Notes table schema 
+model Note {
+  id        String   @id @unique @default(uuid())
+  NoteTitle String
+  noteBody  String
+  starred   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
