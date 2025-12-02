@@ -9,6 +9,8 @@ import { Button } from "./shadcnui/button";
 import { NoteFormFieldType } from "@/lib/types";
 import { FilePlus, Loader } from "lucide-react";
 import { customDelay } from "@/hooks/customDelay";
+import createNote from "@/hooks/serverActions/createNote";
+import { toast } from "react-toastify";
 
 const NoteForm = () => {
 	// Initialize useForm hook
@@ -28,22 +30,30 @@ const NoteForm = () => {
 
 	// Form handler function
 	const noteFormHandlerFunc = async (noteData: NoteFormFieldType) => {
-		try {
-			// Delaying the form submission
-			await customDelay(1500);
+		// Delaying the form submission
+		await customDelay(1500);
 
-			console.log(noteData);
+		// save note data in the database
+		const { message, success, error } = await createNote(noteData);
 
-			reset();
-		} catch (error) {
-			console.error(error);
+		//  Error toast message
+		if (!success) {
+			toast.error(`${message}, ${error}`);
 		}
+
+		//  Success toast message
+		if (success) {
+			toast.success(message);
+		}
+
+		// Reset note fields after submission
+		reset();
 	};
 
 	return (
 		<>
 			<form
-				id="form-rhf-demo"
+				id="note-form"
 				onSubmit={handleSubmit(noteFormHandlerFunc)}
 				className="grid grid-cols-1 gap-4"
 				noValidate>
