@@ -11,7 +11,7 @@ import { FilePlus, Loader } from "lucide-react";
 import { customDelay } from "@/hooks/customDelay";
 import createNote from "@/hooks/serverActions/createNote";
 import { toast } from "react-toastify";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const NoteForm = () => {
 	// Initialize useForm hook

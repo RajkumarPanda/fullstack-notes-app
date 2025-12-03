@@ -11,8 +11,13 @@ import {
 } from "./shadcnui/card";
 import NoteCardActionDropdown from "./NoteCardActionDropdown";
 import { Note } from "@/lib/types";
+import { useState } from "react";
+import toggleStarredIcon from "@/hooks/serverActions/toggleStarredIcon";
 
 const NoteCard = ({ note }: { note: Note }) => {
+	const [isStarred, setIsStarred] = useState<boolean>(note.starred);
+	const [isLoading, setIsLoading] = useState(false);
+
 	// Convert ISO string to Date object
 	const dateObj = new Date(note.createdAt);
 
@@ -29,6 +34,22 @@ const NoteCard = ({ note }: { note: Note }) => {
 		weekday: "short",
 	});
 
+	// Toggle Star icon Handler Function
+	const toggleStarredHandlerFunc = async () => {
+		setIsLoading(true);
+
+		const newStarredValue = !isStarred; // Flip the starred value
+
+		// Invoked the toggle starred icon function
+		const { success } = await toggleStarredIcon(note.id, newStarredValue);
+
+		if (success) {
+			setIsStarred(newStarredValue); // Update the local state
+		}
+
+		setIsLoading(false);
+	};
+
 	return (
 		<>
 			<div className="max-h-[250px] w-full shadow-md">
@@ -42,8 +63,14 @@ const NoteCard = ({ note }: { note: Note }) => {
 							{/* star icon */}
 							<Button
 								variant={"ghost"}
-								className="cursor-pointer">
-								<Star />
+								className="cursor-pointer"
+								onClick={toggleStarredHandlerFunc}
+								disabled={isLoading}>
+								{isStarred ? (
+									<Star className="fill-amber-400 text-amber-400" />
+								) : (
+									<Star />
+								)}
 							</Button>
 
 							{/* 3 dots action icon  */}
