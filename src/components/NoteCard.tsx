@@ -10,15 +10,32 @@ import {
 	CardTitle,
 } from "./shadcnui/card";
 import NoteCardActionDropdown from "./NoteCardActionDropdown";
+import { Note } from "@/lib/types";
 
-const NoteCard = () => {
+const NoteCard = ({ note }: { note: Note }) => {
+	// Convert ISO string to Date object
+	const dateObj = new Date(note.createdAt);
+
+	// Get the date ,time and day name
+	const date = dateObj.toLocaleDateString("en-GB");
+	const time = dateObj
+		.toLocaleTimeString("en-US", {
+			hour: "numeric",
+			minute: "numeric",
+			hour12: true,
+		})
+		.toLowerCase();
+	const weekDayName = dateObj.toLocaleDateString("en-US", {
+		weekday: "short",
+	});
+
 	return (
 		<>
 			<div className="max-h-[250px] w-full shadow-md">
 				<Card className="">
 					<CardHeader className="grid grid-cols-4 items-center">
 						<CardTitle className="col-span-3 truncate text-lg font-semibold">
-							pal pal apl
+							{note.noteTitle}
 						</CardTitle>
 
 						<div className="flex justify-end gap-2">
@@ -35,15 +52,13 @@ const NoteCard = () => {
 					</CardHeader>
 
 					<CardContent>
-						<p className="line-clamp-4 text-justify text-sm">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-							laborum hic aliquid commodi consectetur rerum, molestias soluta
-							unde omnis porro.
-						</p>
+						<p className="line-clamp-4 text-justify text-sm">{note.noteBody}</p>
 					</CardContent>
 					<CardFooter className="grid grid-cols-1 justify-items-end text-xs">
-						<p>sunday,10:06 am</p>
-						<p>24/10/2025</p>
+						<p>
+							{weekDayName},{time}
+						</p>
+						<p>{date}</p>
 					</CardFooter>
 				</Card>
 			</div>
