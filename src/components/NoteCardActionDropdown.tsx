@@ -8,8 +8,20 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "./shadcnui/dropdown-menu";
+import deleteNote from "@/hooks/serverActions/deleteNote";
+import { toast } from "react-toastify";
 
-const NoteCardActionDropdown = () => {
+const NoteCardActionDropdown = ({ noteId }: { noteId: string }) => {
+	// Delete note handler function
+	const deleteNoteHandler = async () => {
+		const { success, message } = await deleteNote(noteId); // Invoke the function
+
+		if (!success) {
+			return toast.error(message);
+		}
+
+		toast.success(message);
+	};
 	return (
 		<>
 			<DropdownMenu>
@@ -33,6 +45,7 @@ const NoteCardActionDropdown = () => {
 					<DropdownMenuItem className="p-0">
 						<Button
 							variant={"outline"}
+							onClick={deleteNoteHandler}
 							className="flex w-full cursor-pointer items-center justify-start gap-2 text-red-700">
 							<Trash className="text-red-700" />
 							<>Delete</>

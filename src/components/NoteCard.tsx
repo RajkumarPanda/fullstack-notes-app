@@ -74,7 +74,7 @@ const NoteCard = ({ note }: { note: Note }) => {
 							</Button>
 
 							{/* 3 dots action icon  */}
-							<NoteCardActionDropdown />
+							<NoteCardActionDropdown noteId={note.id} />
 						</div>
 					</CardHeader>
 
