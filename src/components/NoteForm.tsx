@@ -11,6 +11,7 @@ import { FilePlus, Loader } from "lucide-react";
 import { customDelay } from "@/hooks/customDelay";
 import createNote from "@/hooks/serverActions/createNote";
 import { toast } from "react-toastify";
+import { redirect, useRouter } from "next/navigation";
 
 const NoteForm = () => {
 	// Initialize useForm hook
@@ -28,6 +29,8 @@ const NoteForm = () => {
 		mode: "all",
 	});
 
+	const { push } = useRouter();
+
 	// Form handler function
 	const noteFormHandlerFunc = async (noteData: NoteFormFieldType) => {
 		// Delaying the form submission
@@ -44,6 +47,9 @@ const NoteForm = () => {
 		//  Success toast message
 		if (success) {
 			toast.success(message);
+
+			//  redirect to home page
+			push("/");
 		}
 
 		// Reset note fields after submission

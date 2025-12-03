@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prismaClient";
 import { NoteFormFieldType } from "@/lib/types";
+import { revalidatePath } from "next/cache";
 
 const createNote = async (note: NoteFormFieldType) => {
 	const { noteTitle, noteBody } = note;
@@ -12,6 +13,7 @@ const createNote = async (note: NoteFormFieldType) => {
 				noteBody,
 			},
 		});
+		revalidatePath("/");
 		// Custom  response message for successful creation
 		return { success: true, message: "Note created successfully" };
 	} catch (error) {
