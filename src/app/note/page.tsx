@@ -1,5 +1,7 @@
+import { redirect } from "next/navigation";
+
 const page = () => {
-	return <div>Enter</div>;
+	return redirect("/");
 };
 
 export default page;
