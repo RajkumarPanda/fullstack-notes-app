@@ -1,6 +1,10 @@
 "use client";
 
-import { Star } from "lucide-react";
+import toggleStarredIcon from "@/hooks/serverActions/toggleStarredIcon";
+import { Note } from "@/lib/types";
+import { ArrowRight, Star } from "lucide-react";
+import { useState } from "react";
+import NoteCardActionDropdown from "./NoteCardActionDropdown";
 import { Button } from "./shadcnui/button";
 import {
 	Card,
@@ -9,12 +13,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "./shadcnui/card";
-import NoteCardActionDropdown from "./NoteCardActionDropdown";
-import { Note } from "@/lib/types";
-import { useState } from "react";
-import toggleStarredIcon from "@/hooks/serverActions/toggleStarredIcon";
+import { useRouter } from "next/navigation";
 
 const NoteCard = ({ note }: { note: Note }) => {
+	// Initialize useRouter hook
+	const { push } = useRouter();
+
 	const [isStarred, setIsStarred] = useState<boolean>(note.starred);
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -52,8 +56,8 @@ const NoteCard = ({ note }: { note: Note }) => {
 
 	return (
 		<>
-			<div className="max-h-[250px] w-full shadow-md">
-				<Card className="">
+			<div className="">
+				<Card className="max-h-[260px] w-full shadow-md">
 					<CardHeader className="grid grid-cols-4 items-center">
 						<CardTitle className="col-span-3 truncate text-lg font-semibold">
 							{note.noteTitle}
@@ -78,14 +82,24 @@ const NoteCard = ({ note }: { note: Note }) => {
 						</div>
 					</CardHeader>
 
-					<CardContent>
+					<CardContent className="text-sm">
 						<p className="line-clamp-4 text-justify text-sm">{note.noteBody}</p>
 					</CardContent>
-					<CardFooter className="grid grid-cols-1 justify-items-end text-xs">
-						<p>
-							{weekDayName},{time}
-						</p>
-						<p>{date}</p>
+
+					<CardFooter className="flex justify-between">
+						<div className="text-xs">
+							<p>
+								{weekDayName},{time}
+							</p>
+							<p>{date}</p>
+						</div>
+
+						<Button
+							onClick={() => push(`/note/${note.id}`)}
+							className="bg-foreground/80 text-background cursor-pointer text-sm">
+							Read More
+							<ArrowRight />
+						</Button>
 					</CardFooter>
 				</Card>
 			</div>
