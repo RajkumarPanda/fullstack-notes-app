@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prismaClient";
+import { revalidatePath } from "next/cache";
 
 const toggleStarredIcon = async (noteId: string, newStarredValue: boolean) => {
 	try {
@@ -8,6 +9,10 @@ const toggleStarredIcon = async (noteId: string, newStarredValue: boolean) => {
 			where: { id: noteId },
 			data: { starred: newStarredValue },
 		});
+
+		// Revalidate the paths
+		revalidatePath("/");
+		revalidatePath("/starred");
 
 		return { success: true, message: "Starred status updated successfully" };
 	} catch (error) {
