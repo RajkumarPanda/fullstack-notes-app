@@ -24,7 +24,7 @@ const page = async () => {
 
 	return (
 		<section className="grid h-auto gap-3 md:grid-cols-2 xl:grid-cols-3">
-			{allNotes?.map((note) => (
+			{allNotes.map((note) => (
 				<NoteCard
 					key={note.id}
 					note={note}

@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prismaClient";
+import prisma from "@/lib/prismaClientInstance";
 import { NoteFormFieldType } from "@/lib/types";
 import { revalidatePath } from "next/cache";
 

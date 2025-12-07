@@ -1,5 +1,5 @@
 "use server";
-import prisma from "@/lib/prismaClient";
+import prisma from "@/lib/prismaClientInstance";
 
 const getSingleNoteData = async (noteId: string) => {
 	try {

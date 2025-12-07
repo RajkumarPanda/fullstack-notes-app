@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prismaClient";
+import prisma from "@/lib/prismaClientInstance";
 
 const getStarredNotes = async () => {
 	try {

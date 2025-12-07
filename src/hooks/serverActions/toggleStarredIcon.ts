@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/lib/prismaClient";
+import prisma from "@/lib/prismaClientInstance";
 import { revalidatePath } from "next/cache";
 
 const toggleStarredIcon = async (noteId: string, newStarredValue: boolean) => {
