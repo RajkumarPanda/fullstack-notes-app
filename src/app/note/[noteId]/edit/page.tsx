@@ -7,6 +7,12 @@ import {
 } from "@/components/shadcnui/card";
 import { Separator } from "@/components/shadcnui/separator";
 import getSingleNoteData from "@/hooks/serverActions/getSingleNoteData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Edit Note | Notes App",
+	description: "Edit note page of the Fullstack Notes Application",
+};
 
 // Define param type
 type EditPageParamsType = {

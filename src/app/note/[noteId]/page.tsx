@@ -1,6 +1,13 @@
 import DisplayIndividualNote from "@/components/DisplayIndividualNote";
 import { Card } from "@/components/shadcnui/card";
 import getSingleNoteData from "@/hooks/serverActions/getSingleNoteData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Read Note | Notes App",
+	description:
+		"Dynamically displaying single Note details based on the note ID in the Fullstack Notes Application",
+};
 
 // Define param type
 type NoteSlugPageParamsType = {

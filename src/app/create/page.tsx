@@ -6,6 +6,12 @@ import {
 	CardTitle,
 } from "@/components/shadcnui/card";
 import { Separator } from "@/components/shadcnui/separator";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Create Note | Notes App",
+	description: "Create note page of the Fullstack Notes Application",
+};
 
 const page = () => {
 	return (

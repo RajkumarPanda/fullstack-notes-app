@@ -1,5 +1,11 @@
 import NoteCard from "@/components/NoteCard";
 import getStarredNotes from "@/hooks/serverActions/getStarredNotes";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Starred Notes | Notes App",
+	description: "Starred notes page of the Fullstack Notes Application",
+};
 
 const page = async () => {
 	const { starredNotes } = await getStarredNotes();

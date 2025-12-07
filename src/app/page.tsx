@@ -3,7 +3,7 @@ import getAllNotes from "@/hooks/serverActions/getAllNotes";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Notes App",
+	title: "Home | Notes App",
 	description: "Home page of the Fullstack Notes Application",
 };
 
