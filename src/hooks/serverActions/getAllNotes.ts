@@ -13,7 +13,7 @@ const getAllNotes = async () => {
 	} catch (error) {
 		console.error(error);
 		// Custom response for unsuccessful fetch
-		return { allNotes: [], success: false, message: "Failed to fetch notes." };
+		return { success: false, message: "Failed to fetch notes." };
 	}
 };
 

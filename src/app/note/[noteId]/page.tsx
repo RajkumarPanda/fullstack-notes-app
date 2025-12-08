@@ -16,18 +16,30 @@ type NoteSlugPageParamsType = {
 const page = async ({ params }: NoteSlugPageParamsType) => {
 	const { noteId } = await params;
 
-	const { singleNoteData } = await getSingleNoteData(noteId);
+	const { singleNoteData, success, message } = await getSingleNoteData(noteId);
 
-	// If singleNoteData is undefined it will fallback to not found message
-	if (!singleNoteData) {
+	// fallack ui if fetching single note data is not successful
+	if (!success) {
 		return (
 			<>
-				<section className="flex items-center justify-center">
-					<p>Note not found🥲</p>
+				<section className="flex h-[85dvh] w-full items-center justify-center">
+					<p>{message}</p>
 				</section>
 			</>
 		);
 	}
+
+	// Fallack ui  if singleNoteData is undefined
+	if (singleNoteData === undefined) {
+		return (
+			<>
+				<section className="flex h-[85dvh] w-full items-center justify-center">
+					<p>Something went wrong😶‍🌫️,received undefined.</p>
+				</section>
+			</>
+		);
+	}
+
 	return (
 		<section className="">
 			<Card>

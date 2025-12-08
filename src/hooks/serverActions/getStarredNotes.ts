@@ -22,7 +22,6 @@ const getStarredNotes = async () => {
 		console.error(error);
 		// Custom response for unsuccessful fetch
 		return {
-			starredNotes: [],
 			success: false,
 			message: "Failed to fetch starred notes.",
 		};

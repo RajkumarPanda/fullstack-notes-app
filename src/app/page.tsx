@@ -8,15 +8,24 @@ export const metadata: Metadata = {
 };
 
 const page = async () => {
-	const { allNotes, success } = await getAllNotes();
+	const { allNotes, success, message } = await getAllNotes();
 
 	// console.log(allNotes);
 
-	if (!success || allNotes.length === 0) {
+	if (allNotes === undefined) {
 		return (
 			<section className="flex h-[85dvh] w-full items-center justify-center">
 				<h2 className="text-center text-2xl font-semibold text-gray-600">
-					Failed to fetch😶‍🌫️ or notes are not available🥲.
+					Something went wrong😶‍🌫️,received undefined.
+				</h2>
+			</section>
+		);
+	}
+	if (!success) {
+		return (
+			<section className="flex h-[85dvh] w-full items-center justify-center">
+				<h2 className="text-center text-2xl font-semibold text-gray-600">
+					{message}
 				</h2>
 			</section>
 		);
