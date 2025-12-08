@@ -104,7 +104,7 @@ const EditNote = ({
 									aria-invalid={fieldState.invalid}
 									placeholder="Enter your note here..."
 									autoComplete="off"
-									className="min-h-[200px] resize-none"
+									className="h-60 resize-none"
 								/>
 								{fieldState.invalid && (
 									<FieldError errors={[fieldState.error]} />

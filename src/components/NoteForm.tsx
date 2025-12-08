@@ -77,6 +77,7 @@ const NoteForm = () => {
 									aria-invalid={fieldState.invalid}
 									placeholder="Enter the title here"
 									autoComplete="off"
+									className="resize-none"
 								/>
 								{fieldState.invalid && (
 									<FieldError errors={[fieldState.error]} />
@@ -100,7 +101,7 @@ const NoteForm = () => {
 									aria-invalid={fieldState.invalid}
 									placeholder="Enter your note here..."
 									autoComplete="off"
-									className="min-h-[200px]"
+									className="min-h-[200px] resize-none"
 								/>
 								{fieldState.invalid && (
 									<FieldError errors={[fieldState.error]} />

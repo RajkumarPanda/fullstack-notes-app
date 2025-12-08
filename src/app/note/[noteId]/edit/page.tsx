@@ -36,23 +36,21 @@ const page = async ({ params }: EditPageParamsType) => {
 	}
 
 	return (
-		<>
-			<section className="flex items-center justify-center">
-				<Card className="w-[600px]">
-					<CardHeader className="flex justify-center">
-						<CardTitle className="text-2xl font-semibold">
-							Edit Your Note
-						</CardTitle>
-					</CardHeader>
+		<section className="flex items-center justify-center">
+			<Card className="w-[600px]">
+				<CardHeader className="flex justify-center">
+					<CardTitle className="text-2xl font-semibold">
+						Edit Your Note
+					</CardTitle>
+				</CardHeader>
 
-					<Separator />
+				<Separator />
 
-					<CardContent>
-						<EditNote noteData={singleNoteData} />
-					</CardContent>
-				</Card>
-			</section>
-		</>
+				<CardContent>
+					<EditNote noteData={singleNoteData} />
+				</CardContent>
+			</Card>
+		</section>
 	);
 };
 

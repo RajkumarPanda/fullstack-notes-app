@@ -29,13 +29,11 @@ const page = async ({ params }: NoteSlugPageParamsType) => {
 		);
 	}
 	return (
-		<>
-			<section className="">
-				<Card>
-					<DisplayIndividualNote singleNoteData={singleNoteData} />
-				</Card>
-			</section>
-		</>
+		<section className="">
+			<Card>
+				<DisplayIndividualNote singleNoteData={singleNoteData} />
+			</Card>
+		</section>
 	);
 };
 
