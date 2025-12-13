@@ -9,9 +9,20 @@ export const metadata: Metadata = {
 
 const page = async () => {
 	const { allNotes, success, message } = await getAllNotes();
-
 	// console.log(allNotes);
 
+	// Fallack ui  if  failed to fetch notes
+	if (!success) {
+		return (
+			<section className="flex h-[85dvh] w-full items-center justify-center">
+				<h2 className="text-center text-2xl font-semibold text-gray-600">
+					{message}
+				</h2>
+			</section>
+		);
+	}
+
+	// Fallack ui  if allNotes is undefined
 	if (allNotes === undefined) {
 		return (
 			<section className="flex h-[85dvh] w-full items-center justify-center">
@@ -21,11 +32,12 @@ const page = async () => {
 			</section>
 		);
 	}
-	if (!success) {
+	// Fallack ui if allNotes is empty
+	if (allNotes.length === 0) {
 		return (
 			<section className="flex h-[85dvh] w-full items-center justify-center">
 				<h2 className="text-center text-2xl font-semibold text-gray-600">
-					{message}
+					No notes found,Create your first note!
 				</h2>
 			</section>
 		);
