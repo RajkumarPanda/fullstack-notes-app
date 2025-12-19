@@ -12,7 +12,7 @@ datasource db {
 
 // Notes table schema 
 model Note {
-  id        String   @id @unique @default(uuid())
+  id        String   @id @default(uuid())
   noteTitle String
   noteBody  String
   starred   Boolean  @default(false)

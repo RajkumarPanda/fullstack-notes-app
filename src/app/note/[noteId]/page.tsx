@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 
 // Define param type
 type NoteSlugPageParamsType = {
-	params: { noteId: string };
+	params: Promise<{ noteId: string }>;
 };
 const page = async ({ params }: NoteSlugPageParamsType) => {
 	const { noteId } = await params;
 
 	const { singleNoteData, success, message } = await getSingleNoteData(noteId);
 
-	// fallack ui if fetching single note data is not successful
+	// fallback ui if fetching single note data is not successful
 	if (!success) {
 		return (
 			<>
@@ -29,7 +29,7 @@ const page = async ({ params }: NoteSlugPageParamsType) => {
 		);
 	}
 
-	// Fallack ui  if singleNoteData is undefined
+	// Fallback ui  if singleNoteData is undefined
 	if (singleNoteData === undefined) {
 		return (
 			<>

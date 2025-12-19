@@ -20,7 +20,7 @@ type EditNotePropsType = {
 const EditNote = ({
 	noteData: { noteBody, noteTitle, id },
 }: EditNotePropsType) => {
-	// Initialize userouter hook
+	// Initialize  the useRouter hook
 	const { push } = useRouter();
 
 	// Initialize useForm hook

@@ -19,7 +19,7 @@ const createNote = async (note: NoteFormFieldType) => {
 	} catch (error) {
 		console.error(error);
 		// Custom  response message for failed creation
-		return { success: false, message: "Failed to create note", error: error };
+		return { success: false, message: "Failed to create note" };
 	}
 };
 

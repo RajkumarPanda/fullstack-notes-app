@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
 const NoteForm = () => {
-	// Initialize useForm hook
+	// Initialize the useForm hook
 	const {
 		handleSubmit,
 		formState: { isSubmitting, isValid },
@@ -37,23 +37,23 @@ const NoteForm = () => {
 		await customDelay(1500);
 
 		// save note data in the database
-		const { message, success, error } = await createNote(noteData);
+		const { message, success } = await createNote(noteData);
 
 		//  Error toast message
 		if (!success) {
-			toast.error(`${message}, ${error}`);
+			toast.error(message);
 		}
 
 		//  Success toast message
 		if (success) {
 			toast.success(message);
 
-			//  redirect to home page
+			// Reset note fields after submission
+			reset();
+
+			//  redirect to the home page
 			push("/");
 		}
-
-		// Reset note fields after submission
-		reset();
 	};
 
 	return (

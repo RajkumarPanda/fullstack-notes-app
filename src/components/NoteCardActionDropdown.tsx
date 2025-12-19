@@ -41,7 +41,6 @@ const NoteCardActionDropdown = ({ noteId }: { noteId: string }) => {
 					<DropdownMenuItem className="p-0">
 						<Button
 							variant={"outline"}
-							// to redirect the user in edit page
 							onClick={() => push(`/note/${noteId}/edit`)} //Redirect to the edit page
 							className="flex w-full cursor-pointer items-center justify-start gap-2 text-green-700">
 							<SquarePen className="text-green-700" /> <>Edit</>

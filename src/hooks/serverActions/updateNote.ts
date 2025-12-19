@@ -15,8 +15,10 @@ const updateNote = async (id: string, noteData: NoteFormFieldType) => {
 			},
 		});
 
-		// Revalidate the path to reflect changes
+		// Revalidate the paths to reflect changes
 		revalidatePath("/");
+
+		revalidatePath("/starred");
 
 		return { success: true, message: "Note updated successfully" };
 	} catch (error) {

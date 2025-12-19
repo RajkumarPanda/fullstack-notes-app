@@ -16,7 +16,7 @@ import {
 import { useRouter } from "next/navigation";
 
 const NoteCard = ({ note }: { note: Note }) => {
-	// Initialize useRouter hook
+	// Initialize the useRouter hook
 	const { push } = useRouter();
 
 	const [isStarred, setIsStarred] = useState<boolean>(note.starred);

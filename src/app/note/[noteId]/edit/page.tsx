@@ -24,7 +24,7 @@ const page = async ({ params }: EditPageParamsType) => {
 
 	const { singleNoteData, success, message } = await getSingleNoteData(noteId);
 
-	// Fallack ui  if  failed to fetch the note
+	// Fallback ui  if  failed to fetch the note
 	if (!success) {
 		return (
 			<>
@@ -35,7 +35,7 @@ const page = async ({ params }: EditPageParamsType) => {
 		);
 	}
 
-	// Fallack ui  if singleNoteData is undefined
+	// Fallback ui  if singleNoteData is undefined
 	if (singleNoteData === undefined) {
 		return (
 			<>

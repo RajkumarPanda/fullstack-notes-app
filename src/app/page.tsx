@@ -1,5 +1,6 @@
 import NoteCard from "@/components/NoteCard";
 import getAllNotes from "@/hooks/serverActions/getAllNotes";
+import { Note } from "@/lib/types";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ const page = async () => {
 	const { allNotes, success, message } = await getAllNotes();
 	// console.log(allNotes);
 
-	// Fallack ui  if  failed to fetch notes
+	// Fallback ui if failed to fetch notes
 	if (!success) {
 		return (
 			<section className="flex h-[85dvh] w-full items-center justify-center">
@@ -22,7 +23,7 @@ const page = async () => {
 		);
 	}
 
-	// Fallack ui  if allNotes is undefined
+	// Fallback ui if allNotes is undefined
 	if (allNotes === undefined) {
 		return (
 			<section className="flex h-[85dvh] w-full items-center justify-center">
@@ -32,7 +33,7 @@ const page = async () => {
 			</section>
 		);
 	}
-	// Fallack ui if allNotes is empty
+	// Fallback ui if allNotes is empty
 	if (allNotes.length === 0) {
 		return (
 			<section className="flex h-[85dvh] w-full items-center justify-center">
@@ -45,7 +46,7 @@ const page = async () => {
 
 	return (
 		<section className="grid h-auto gap-3 md:grid-cols-2 xl:grid-cols-3">
-			{allNotes.map((note) => (
+			{allNotes.map((note: Note) => (
 				<NoteCard
 					key={note.id}
 					note={note}
