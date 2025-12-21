@@ -16,11 +16,11 @@ import {
 import { useRouter } from "next/navigation";
 
 const NoteCard = ({ note }: { note: Note }) => {
-	// Initialize the useRouter hook
-	const { push } = useRouter();
-
 	const [isStarred, setIsStarred] = useState<boolean>(note.starred);
 	const [isLoading, setIsLoading] = useState(false);
+
+	// Initialize the useRouter hook
+	const { push } = useRouter();
 
 	// Convert ISO string to Date object
 	const dateObj = new Date(note.createdAt);
@@ -56,7 +56,7 @@ const NoteCard = ({ note }: { note: Note }) => {
 
 	return (
 		<>
-			<div className="">
+			<div>
 				<Card className="max-h-[260px] w-full shadow-md">
 					<CardHeader className="grid grid-cols-4 items-center">
 						<CardTitle className="col-span-3 truncate text-lg font-semibold">
@@ -95,8 +95,9 @@ const NoteCard = ({ note }: { note: Note }) => {
 						</div>
 
 						<Button
+							type="button"
 							onClick={() => push(`/note/${note.id}`)}
-							className="bg-foreground/80 text-background cursor-pointer text-sm">
+							className="bg-foreground/90 text-background hover:bg-foreground/70 cursor-pointer text-sm">
 							Read More
 							<ArrowRight />
 						</Button>

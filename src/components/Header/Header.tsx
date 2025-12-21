@@ -5,7 +5,7 @@ import { House, SquarePen, Star } from "lucide-react";
 const Header = () => {
 	return (
 		<header
-			className="border-b shadow"
+			className="border-b shadow select-none"
 			aria-label="app-header">
 			<div className="mx-auto flex items-center justify-between px-10 py-3">
 				<Link href={"/"}>

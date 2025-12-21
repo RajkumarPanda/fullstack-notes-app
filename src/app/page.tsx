@@ -1,6 +1,5 @@
 import NoteCard from "@/components/NoteCard";
 import getAllNotes from "@/hooks/serverActions/getAllNotes";
-import { Note } from "@/lib/types";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,7 +45,7 @@ const page = async () => {
 
 	return (
 		<section className="grid h-auto gap-3 md:grid-cols-2 xl:grid-cols-3">
-			{allNotes.map((note: Note) => (
+			{allNotes.map((note) => (
 				<NoteCard
 					key={note.id}
 					note={note}

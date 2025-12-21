@@ -29,6 +29,7 @@ const NoteForm = () => {
 		mode: "all",
 	});
 
+	// Initialize the useRouter hook
 	const { push } = useRouter();
 
 	// Form handler function

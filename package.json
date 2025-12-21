@@ -60,5 +60,6 @@
 		"bun": "1.3.3"
 	},
 	"author": "Rajkumar Panda",
-	"license": "MIT"
+	"license": "MIT",
+	"homepage": "https://github.com/RajkumarPanda/fullstack-notes-app"
 }

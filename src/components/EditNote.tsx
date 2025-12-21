@@ -47,7 +47,7 @@ const EditNote = ({
 
 		//  Error toast message
 		if (!success) {
-			toast.error(message);
+			return toast.error(message);
 		}
 
 		//  Success toast message
@@ -123,7 +123,7 @@ const EditNote = ({
 					className="flex cursor-pointer items-center">
 					{isSubmitting ? (
 						<>
-							<Loader className="animate-spin" /> <span>Updatting...</span>
+							<Loader className="animate-spin" /> <span>Updating...</span>
 						</>
 					) : (
 						<>

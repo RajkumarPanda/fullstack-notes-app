@@ -14,11 +14,11 @@ const createNote = async (note: NoteFormFieldType) => {
 			},
 		});
 		revalidatePath("/");
-		// Custom  response message for successful creation
+		// Custom response message for successful creation
 		return { success: true, message: "Note created successfully" };
 	} catch (error) {
 		console.error(error);
-		// Custom  response message for failed creation
+		// Custom response message for failed creation
 		return { success: false, message: "Failed to create note" };
 	}
 };

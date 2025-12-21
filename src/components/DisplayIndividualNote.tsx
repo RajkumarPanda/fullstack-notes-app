@@ -41,11 +41,7 @@ const DisplayIndividualNote = ({
 			</CardHeader>
 			<CardContent className="grid gap-4 font-semibold">
 				<span>
-					<label
-						htmlFor="title"
-						className="">
-						Title :
-					</label>
+					<label htmlFor="title">Title :</label>
 					<Textarea
 						id="title"
 						value={noteTitle}

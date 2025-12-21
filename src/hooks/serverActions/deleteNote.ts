@@ -11,6 +11,7 @@ const deleteNote = async (noteId: string) => {
 
 		// Revalidate the path to reflect changes
 		revalidatePath("/");
+		revalidatePath("/starred");
 
 		return { success: true, message: "Note deleted successfully" };
 	} catch (error) {

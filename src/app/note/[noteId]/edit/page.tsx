@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 // Define param type
 type EditPageParamsType = {
-	params: { noteId: string };
+	params: Promise<{ noteId: string }>;
 };
 
 const page = async ({ params }: EditPageParamsType) => {

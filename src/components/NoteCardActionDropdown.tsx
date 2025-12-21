@@ -40,6 +40,7 @@ const NoteCardActionDropdown = ({ noteId }: { noteId: string }) => {
 				<DropdownMenuContent className="grid grid-cols-1 gap-1">
 					<DropdownMenuItem className="p-0">
 						<Button
+							type="button"
 							variant={"outline"}
 							onClick={() => push(`/note/${noteId}/edit`)} //Redirect to the edit page
 							className="flex w-full cursor-pointer items-center justify-start gap-2 text-green-700">
@@ -49,6 +50,7 @@ const NoteCardActionDropdown = ({ noteId }: { noteId: string }) => {
 
 					<DropdownMenuItem className="p-0">
 						<Button
+							type="button"
 							variant={"outline"}
 							onClick={deleteNoteHandler}
 							className="flex w-full cursor-pointer items-center justify-start gap-2 text-red-700">
