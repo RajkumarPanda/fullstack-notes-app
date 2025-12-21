@@ -27,22 +27,18 @@ const page = async ({ params }: EditPageParamsType) => {
 	// Fallback ui  if  failed to fetch the note
 	if (!success) {
 		return (
-			<>
-				<section className="flex h-[85dvh] w-full items-center justify-center">
-					<p>{message}</p>
-				</section>
-			</>
+			<section className="flex h-[85dvh] w-full items-center justify-center">
+				<p>{message}</p>
+			</section>
 		);
 	}
 
 	// Fallback ui  if singleNoteData is undefined
 	if (singleNoteData === undefined) {
 		return (
-			<>
-				<section className="flex h-[85dvh] w-full items-center justify-center">
-					<p>Something went wrong😶‍🌫️,received undefined.</p>
-				</section>
-			</>
+			<section className="flex h-[85dvh] w-full items-center justify-center">
+				<p>Something went wrong😶‍🌫️,received undefined.</p>
+			</section>
 		);
 	}
 

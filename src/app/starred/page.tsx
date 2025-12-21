@@ -13,33 +13,27 @@ const page = async () => {
 	// Fallack ui  if  failed to fetch the starred notes
 	if (!success) {
 		return (
-			<>
-				<section className="flex h-[85dvh] items-center justify-center text-2xl font-semibold">
-					<p>{message}</p>
-				</section>
-			</>
+			<section className="flex h-[85dvh] items-center justify-center text-2xl font-semibold">
+				<p>{message}</p>
+			</section>
 		);
 	}
 
 	// Fallack ui  if starredNote is undefined
 	if (starredNotes === undefined) {
 		return (
-			<>
-				<section className="flex h-[85dvh] items-center justify-center text-2xl font-semibold">
-					<p>Something went wrong😶‍🌫️,received undefined.</p>
-				</section>
-			</>
+			<section className="flex h-[85dvh] items-center justify-center text-2xl font-semibold">
+				<p>Something went wrong😶‍🌫️,received undefined.</p>
+			</section>
 		);
 	}
 
 	// If no starred notes are found, display a fallback message
 	if (starredNotes.length === 0) {
 		return (
-			<>
-				<section className="flex h-[85dvh] items-center justify-center text-2xl font-semibold">
-					<p>No starred notes found.</p>
-				</section>
-			</>
+			<section className="flex h-[85dvh] items-center justify-center text-2xl font-semibold">
+				<p>No starred notes found.</p>
+			</section>
 		);
 	}
 
