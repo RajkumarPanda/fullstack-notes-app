@@ -20,9 +20,11 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
 					enableSystem={false}>
 					<Header />
 
-					<main className="px-10 py-5">{children}</main>
+					<main className="mb-[7dvh] h-auto p-5 select-none md:m-0">
+						{children}
+					</main>
 
-					<footer className="bg-background text-foreground fixed bottom-0 flex h-[8dvh] w-full border-t shadow-2xl md:hidden">
+					<footer className="bg-background text-foreground fixed bottom-0 flex h-[7dvh] w-full border-t shadow-2xl md:hidden">
 						<MobileMenuBar />
 					</footer>
 				</ThemeProvider>

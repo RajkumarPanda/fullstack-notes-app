@@ -1,6 +1,10 @@
 "use client";
 
-import { Star } from "lucide-react";
+import toggleStarredIcon from "@/hooks/serverActions/toggleStarredIcon";
+import { Note } from "@/lib/types";
+import { ArrowRight, Star } from "lucide-react";
+import { useState } from "react";
+import NoteCardActionDropdown from "./NoteCardActionDropdown";
 import { Button } from "./shadcnui/button";
 import {
 	Card,
@@ -9,41 +13,94 @@ import {
 	CardHeader,
 	CardTitle,
 } from "./shadcnui/card";
-import NoteCardActionDropdown from "./NoteCardActionDropdown";
+import { useRouter } from "next/navigation";
 
-const NoteCard = () => {
+const NoteCard = ({ note }: { note: Note }) => {
+	const [isStarred, setIsStarred] = useState<boolean>(note.starred);
+	const [isLoading, setIsLoading] = useState(false);
+
+	// Initialize the useRouter hook
+	const { push } = useRouter();
+
+	// Convert ISO string to Date object
+	const dateObj = new Date(note.createdAt);
+
+	// Get the date ,time and day name
+	const date = dateObj.toLocaleDateString("en-GB");
+	const time = dateObj
+		.toLocaleTimeString("en-US", {
+			hour: "numeric",
+			minute: "numeric",
+			hour12: true,
+		})
+		.toLowerCase();
+	const weekDayName = dateObj.toLocaleDateString("en-US", {
+		weekday: "short",
+	});
+
+	// Toggle Star icon Handler Function
+	const toggleStarredHandlerFunc = async () => {
+		setIsLoading(true);
+
+		const newStarredValue = !isStarred; // Flip the starred value
+
+		// Invoked the toggle starred icon function
+		const { success } = await toggleStarredIcon(note.id, newStarredValue);
+
+		if (success) {
+			setIsStarred(newStarredValue); // Update the local state
+		}
+
+		setIsLoading(false);
+	};
+
 	return (
 		<>
-			<div className="max-h-[250px] w-full shadow-md">
-				<Card className="">
+			<div>
+				<Card className="max-h-[260px] w-full shadow-md">
 					<CardHeader className="grid grid-cols-4 items-center">
 						<CardTitle className="col-span-3 truncate text-lg font-semibold">
-							pal pal apl
+							{note.noteTitle}
 						</CardTitle>
 
 						<div className="flex justify-end gap-2">
 							{/* star icon */}
 							<Button
 								variant={"ghost"}
-								className="cursor-pointer">
-								<Star />
+								className="cursor-pointer"
+								onClick={toggleStarredHandlerFunc}
+								disabled={isLoading}>
+								{isStarred ? (
+									<Star className="fill-amber-400 text-amber-400" />
+								) : (
+									<Star />
+								)}
 							</Button>
 
 							{/* 3 dots action icon  */}
-							<NoteCardActionDropdown />
+							<NoteCardActionDropdown noteId={note.id} />
 						</div>
 					</CardHeader>
 
-					<CardContent>
-						<p className="line-clamp-4 text-justify text-sm">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-							laborum hic aliquid commodi consectetur rerum, molestias soluta
-							unde omnis porro.
-						</p>
+					<CardContent className="text-sm">
+						<p className="line-clamp-4 text-justify text-sm">{note.noteBody}</p>
 					</CardContent>
-					<CardFooter className="grid grid-cols-1 justify-items-end text-xs">
-						<p>sunday,10:06 am</p>
-						<p>24/10/2025</p>
+
+					<CardFooter className="flex justify-between">
+						<div className="text-xs">
+							<p>
+								{weekDayName},{time}
+							</p>
+							<p>{date}</p>
+						</div>
+
+						<Button
+							type="button"
+							onClick={() => push(`/note/${note.id}`)}
+							className="bg-foreground/90 text-background hover:bg-foreground/70 cursor-pointer text-sm">
+							Read More
+							<ArrowRight />
+						</Button>
 					</CardFooter>
 				</Card>
 			</div>

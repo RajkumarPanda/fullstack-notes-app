@@ -8,8 +8,24 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "./shadcnui/dropdown-menu";
+import deleteNote from "@/hooks/serverActions/deleteNote";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
-const NoteCardActionDropdown = () => {
+const NoteCardActionDropdown = ({ noteId }: { noteId: string }) => {
+	// Initialze the useRouter hook
+	const { push } = useRouter();
+
+	// Delete note handler function
+	const deleteNoteHandler = async () => {
+		const { success, message } = await deleteNote(noteId); // Invoke the function
+
+		if (!success) {
+			return toast.error(message);
+		}
+
+		toast.success(message);
+	};
 	return (
 		<>
 			<DropdownMenu>
@@ -24,7 +40,9 @@ const NoteCardActionDropdown = () => {
 				<DropdownMenuContent className="grid grid-cols-1 gap-1">
 					<DropdownMenuItem className="p-0">
 						<Button
+							type="button"
 							variant={"outline"}
+							onClick={() => push(`/note/${noteId}/edit`)} //Redirect to the edit page
 							className="flex w-full cursor-pointer items-center justify-start gap-2 text-green-700">
 							<SquarePen className="text-green-700" /> <>Edit</>
 						</Button>
@@ -32,7 +50,9 @@ const NoteCardActionDropdown = () => {
 
 					<DropdownMenuItem className="p-0">
 						<Button
+							type="button"
 							variant={"outline"}
+							onClick={deleteNoteHandler}
 							className="flex w-full cursor-pointer items-center justify-start gap-2 text-red-700">
 							<Trash className="text-red-700" />
 							<>Delete</>
